@@ -91,3 +91,23 @@ a:hover {
   justify-content: center;
   text-align: center;
 }
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.line-main {
+  display: block;
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 600;
+}
+
+.line-note {
+  display: block;
+  font-size: 1rem;
+  margin-top: 1.2rem;
+  opacity: 0.6;
+  letter-spacing: 0.1rem;
+}
