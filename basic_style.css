@@ -83,3 +83,11 @@ a{
 a:hover {
   color: #6965c9;
 }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
