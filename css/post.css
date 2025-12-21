@@ -15,20 +15,12 @@
 }
 
 .post-list-box {
-  max-width: 800px;
-  width: calc(100% - 32px);
-  margin: 0 auto 40px;
-  padding: 28px 24px;
-
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
-
-  transition: backdrop-filter 0.25s ease;
-}
-
-.post-list-box:hover {
+  background-color: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
+
+  border-radius: 12px;
+  padding: 28px 24px;
 }
 
 .post {
@@ -83,16 +75,25 @@
 
 .post-card {
   padding: 1.2rem 1.6rem;
+
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+
   border-radius: 10px;
-  
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+
+  transition:
+    background-color 0.25s ease,
+    backdrop-filter 0.25s ease;
 }
 
+
 .post-card:hover {
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
 }
+
 
 .post-title {
   font-size: 1.4rem;
