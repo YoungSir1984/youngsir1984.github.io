@@ -1,10 +1,10 @@
 .glass-box {
   background-color: rgba(0, 0, 0, 0.25);
-  background-filter: blur(7px);
+  backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
 
   border-radius: 12px;
-  box-sizing: border-box:
+  box-sizing: border-box;
 }
 
 .content-box {
