@@ -98,7 +98,7 @@
     grid-template-columns: 1fr;
   }
 
-  .sidebar {
+.sidebar {
     position: static;
   }
 }
