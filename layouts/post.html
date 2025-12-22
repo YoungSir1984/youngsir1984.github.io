@@ -9,7 +9,9 @@
   <link rel="stylesheet" href="/css/base.css">
   <link rel="stylesheet" href="/css/background.css">
   <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/hero.css">
   <link rel="stylesheet" href="/css/post.css">
+  <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="/css/toc.css">
 </head>
 
@@ -43,6 +45,19 @@
 
   </main>
 
-  <script src="/js/toc.js"></script>
+  <script>
+  const params = new URLSearchParams(location.search);
+  const post = params.get("post");
+
+  if (post) {
+    fetch(`/posts/${post}.html`)
+      .then(res => res.text())
+      .then(html => {
+        document.querySelector(".main-column").innerHTML = html;
+      });
+  }
+</script>
+
+  <script src="/javascript/toc.js"></script>
 </body>
 </html>
