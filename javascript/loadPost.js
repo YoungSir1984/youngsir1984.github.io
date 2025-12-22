@@ -1,55 +1,40 @@
-const urlParams = new URLSearchParams(location.search);
-    const post = urlParams.get("post") || "";
-    if (post) {
-      fetch(`/posts/${post}.html`)
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById("article-container").innerHTML = html;
-          const titleElem = document.querySelector("#article-container .post-title");
-          if (titleElem) {
-            document.title = titleElem.innerText + " | YoungSirSpace";
-            document.getElementById("page-title").innerText = document.title;
-          }
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("article-container");
+  if (!container) {
+    console.error("[loadPost] #article-container not found");
+    return;
+  }
 
-          initTOC();
-        });
-    }
-    
-    function initTOC() {
-      const toc = document.getElementById("toc");
-      const content = document.getElementById("article-container");
-      if (!toc || !content) return;
+  const params = new URLSearchParams(window.location.search);
+  const post = params.get("post");
 
-      const headers = content.querySelectorAll("h2, h3");
-      if (!headers.length) {
-        toc.innerHTML = "<p style='color:#888;font-size:0.9rem;'>No content outline</p>";
-        return;
+  if (!post) {
+    container.innerHTML = "<p style='color:#888;'>No post specified.</p>";
+    return;
+  }
+
+  fetch(`/posts/${post}.html`)
+    .then(res => {
+      if (!res.ok) {
+        throw new Error("Post not found");
+      }
+      return res.text();
+    })
+    .then(html => {
+      container.innerHTML = html;
+
+      const titleElem = container.querySelector(".post-title");
+      if (titleElem) {
+        document.title = `${titleElem.innerText} | YoungSirSpace`;
       }
 
-      const ul = document.createElement("ul");
-      headers.forEach((h, i) => {
-        if (!h.id) h.id = "heading-" + i;
-        const li = document.createElement("li");
-        li.classList.add(h.tagName.toLowerCase());
-
-        const a = document.createElement("a");
-        a.href = "#" + h.id;
-        a.textContent = h.textContent;
-
-        li.appendChild(a);
-        ul.appendChild(li);
-      });
-      toc.appendChild(ul);
-
-      window.addEventListener("scroll", () => {
-        let current;
-        headers.forEach(h => {
-          if (h.getBoundingClientRect().top < 140) {
-            current = h.id;
-          }
-        });
-        toc.querySelectorAll("a").forEach(a => {
-          a.classList.toggle("active", a.getAttribute("href") === "#" + current);
-        });
-      });
-    }
+      if (typeof initTOC === "function") {
+        initTOC();
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      container.innerHTML =
+        "<p style='color:#888;'>Failed to load post.</p>";
+    });
+});
