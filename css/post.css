@@ -150,3 +150,40 @@
 .main-column {
   flex: 1;
 }
+
+.article-share {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.share-label {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-right: 6px;
+}
+
+.share-btn {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.share-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.share-btn:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
