@@ -1,6 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     document.body.addEventListener('click', function(e) {
+        
+        var modal = document.getElementById('wechat-qr-modal');
+        var qrImg = document.getElementById('wechat-qr-img');
+        
+        var isWeChatBtn = e.target.closest('#share-wechat');
+        var isInsideModal = e.target.closest('#wechat-qr-modal'); 
+        var isCloseBtn = e.target.closest('#close-qr');
+
+        if (isWeChatBtn) {
+            e.preventDefault();
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+            } else {
+                var currentUrl = encodeURIComponent(window.location.href);
+                qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + currentUrl;
+                modal.style.display = 'block';
+            }
+            return;
+        }
+
+        if (isInsideModal) {
+            if (isCloseBtn) {
+                e.preventDefault();
+                modal.style.display = 'none';
+            }
+            return;
+        }
+        
+        if (modal.style.display === 'block') {
+            modal.style.display = 'none';
+        }
+ 
         var currentUrl = window.location.href;
         var encodedUrl = encodeURIComponent(currentUrl);
         var currentTitle = encodeURIComponent(document.title);
@@ -17,35 +49,12 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(shareUrl, '_blank', 'width=600,height=400');
         }
 
-        else if (e.target.closest('#share-wechat')) {
-            e.preventDefault();
-            
-            var modal = document.getElementById('wechat-qr-modal');
-            var qrImg = document.getElementById('wechat-qr-img');
-            
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-                return;
-            }
-
-            qrImg.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodedUrl;
-            
-            modal.style.display = 'block';
-        }
-        
-        else if (e.target.closest('#close-qr') || e.target.id === 'wechat-qr-modal') {
-            e.preventDefault();
-            document.getElementById('wechat-qr-modal').style.display = 'none';
-        }
-
         else if (e.target.closest('#share-discord') || e.target.closest('#share-instagram')) {
             e.preventDefault();
-            
             navigator.clipboard.writeText(currentUrl).then(function() {
-                alert('Link copied to clipboard! You can now paste it in Discord or Instagram.');
+                alert('Link copied to clipboard!');
             }).catch(function(err) {
-                console.error('Could not copy text: ', err);
-                alert('Failed to copy link. Please copy the URL from the address bar.');
+                console.error('Failed to copy: ', err);
             });
         }
     });
