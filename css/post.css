@@ -18,11 +18,11 @@
 .page-layout {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 25vh 24px 80px; 
+  padding: 25vh 24px 80px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 32px;
-  align-items: start; 
+  align-items: start;
 }
 
 .sidebar {
@@ -55,21 +55,21 @@
   transition: background 0.2s ease;
 }
 .post-card:hover { background: rgba(255, 255, 255, 0.1); }
-.post-card .post-title { font-size: 1.3rem; margin: 0 0 0.6rem 0; text-align: left; }
+.post-card .post-title { font-size: 1.4rem; margin: 0 0 0.6rem 0; text-align: left; }
+/* ---.post-card .post-excerpt { font-size: 0.95rem; color: var(--text-dim); line-height: 1.7; }--- */
 
 #postContent.post-content { 
   max-width: 850px; 
-  margin: 0;
+  margin: 0 auto;
   padding: 40px 32px 50px;
 }
 
 #postContent .post-title {
-  font-size: clamp(1.5rem, 4vw, 2.2rem); 
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
   text-align: center;
   margin: 0 0 1rem 0;
 }
-
-.post-meta { text-align: center; color: var(--text-dim); margin-bottom: 2rem; font-size: 0.9rem; }
+.post-meta { text-align: center; color: var(--text-dim); margin-bottom: 2.5rem; }
 
 div.post-content p {
   font-size: 1.1rem;
@@ -83,5 +83,42 @@ div.post-content p {
   align-items: center;
   flex-wrap: wrap;
   gap: 15px;
-  margin-top: 3.5rem; 
+  margin-top: 3.5rem;
   padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.share-label { font-size: 0.9rem; opacity: 0.7; }
+
+.share-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.2s ease;
+}
+.share-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-3px); }
+.share-btn img { width: 20px; height: 20px; }
+
+.qr-modal {
+  position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
+  width: 180px; background: white; padding: 15px; border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6); z-index: 100;
+}
+.qr-content { text-align: center; color: #333; }
+.qr-content p { text-indent: 0 !important; font-size: 14px; margin-bottom: 10px; }
+.qr-content button { margin-top: 8px; cursor: pointer; border: none; padding: 4px 12px; border-radius: 4px; }
+
+@media (max-width: 900px) {
+  .page-layout { grid-template-columns: 1fr; }
+  .sidebar { position: static; }
+}
+
+@media (max-width: 600px) {
+  .page-layout { padding: 0 16px 40px; margin-top: 20px; }
+  div.post-content p { text-indent: 1.5em; font-size: 1.1rem; }
+  .article-share { margin-top: 2.5rem; justify-content: center; }
+}
