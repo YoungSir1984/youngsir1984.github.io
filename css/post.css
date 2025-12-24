@@ -132,6 +132,7 @@ div.post-content p {
   margin-top: 3.5rem;
   padding: 1.5rem 0 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
 }
 
 .share-label { font-size: 0.9rem; opacity: 0.7; }
@@ -150,13 +151,32 @@ div.post-content p {
 .share-btn img { width: 20px; height: 20px; }
 
 .qr-modal {
-  position: absolute; bottom: 80px; left: 50%; transform: translateX(-50%);
-  width: 180px; background: white; padding: 15px; border-radius: 12px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.6); z-index: 100;
+  position: absolute; bottom: 70px; transform: translateX(-50%);
+  width: 160px; background: white; padding: 12px; border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 1000; display: none;
 }
 .qr-content { text-align: center; color: #333; }
 .qr-content p { text-indent: 0 !important; font-size: 14px; margin-bottom: 10px; }
 .qr-content button { margin-top: 8px; cursor: pointer; border: none; padding: 4px 12px; border-radius: 4px; }
+
+.qr-modal::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+}
+
+.qr-content p {
+    text-indent: 0 !important;
+    margin: 0 0 8px 0;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
 
 @media (max-width: 900px) {
   .page-layout { grid-template-columns: 1fr; }
