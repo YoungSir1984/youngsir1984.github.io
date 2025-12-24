@@ -70,10 +70,9 @@
   gap: 4px;
 }
 .post-date {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
   margin: 0;
-  text-transform: uppercase;
   letter-spacing: 1px;
 }
 .post-excerpt {
