@@ -152,7 +152,7 @@ div.post-content p {
 
 .qr-modal {
   position: absolute; bottom: 70px; transform: translateX(-50%);
-  width: 160px; background: white; padding: 12px; border-radius: 12px;
+  width: 240px; background: white; padding: 12px; border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.5); z-index: 1000; display: none;
 }
 .qr-content { text-align: center; color: #333; }
