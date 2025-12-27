@@ -18,11 +18,17 @@
 .page-layout {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 64px 24px 80px;
+  padding: 0 24px 80px;
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
   gap: 32px;
   align-items: start;
+}
+
+.page-layout::before {
+  content: "";
+  grid-column: 1 / -1;
+  height: 25vh;
 }
 
 .sidebar {
@@ -143,7 +149,7 @@ div.post-content p {
   position: relative;
 }
 
-.share-label { font-size: 0.9rem; opacity: 0.7; }
+.share-label { font-size: 0.9rem; opacity: 0.7; margin-right: 12px;}
 
 .share-btn {
   width: 36px;
