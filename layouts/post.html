@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/css/post.css">
   <link rel="stylesheet" href="/css/responsive.css">
   <link rel="stylesheet" href="/css/toc.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-tomorrow.min.css">
 </head>
 
 <body>
@@ -29,7 +30,39 @@
     <div class="main-column">
 
       <div class="content-box glass-box" id="article-container">
+        <article id="post-body" class="post-content"></article>
+
+        <div class="share-label">Share</span>
+
+          <a id="share-twitter" class="share-btn" target="_blank" rel="noopener">
+            <img src="/X.png" alt="Share on X">
+          </a>
+
+          <a id="share-facebook" class="share-btn" target="_blank" rel="noopener">
+            <img src="/Facebook.png" alt="Share on Facebook">
+          </a>
+
+          <a id="share-wechat" class="share-btn" href="#">
+            <img src="/wechat.png" alt="Share on WeChat">
+          </a>
+
+          <a id="share-discord" class="share-btn" href="#">
+            <img src="/discord.png" alt="Share on Discord">
+          </a>
+
+          <a id="share-instagram" class="share-btn" href="#">
+            <img src="/Instagram.png" alt="Share on Instagram">
+          </a>
+
+          <div id="wechat-qr-modal" class="qr-modal" style="display:none;">
+            <div class="qr-content">
+              <p>Scan with WeChat</p>
+              <img id="wechat-qr-img" src="" alt="QR Code">
+              <button id="close-qr">Close</button>
+            </div>
+          </div>
       </div>
+    </div>
 
     </div>
 
@@ -66,5 +99,9 @@
   <script src="/javascript/toc.js"></script>
   <script src="/javascript/header-blur.js"></script>
   <script src="/javascript/share.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-python.min.js"></script>
+
 </body>
 </html>
